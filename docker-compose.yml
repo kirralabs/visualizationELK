@@ -1,0 +1,50 @@
+version: '3.2'
+
+services:
+ elasticsearch:
+   labels:
+     com.example.service: "elasticsearch"
+     com.example.description: "For searching and indexing data"
+   image: elasticsearch:6.7.1
+   container_name: bookme_es
+   environment:
+   - discovery.type=single-node
+   volumes:
+     - type: volume
+       source: esdata1
+       target: /usr/share/elasticsearch/data/
+   ports:
+     - "9200:9200"
+ kibana:
+   labels:
+     com.example.service: "kibana"
+     com.example.description: "Data visualisation and for log aggregation"
+   image: kibana:6.7.1
+   container_name: bookme_kibana
+   ports:
+     - "5601:5601"
+   environment:
+     - ELASTICSEARCH_URL=http://elasticsearch:9200
+   depends_on:
+     - elasticsearch
+ logstash:
+   labels:
+     com.example.service: "logstash"
+     com.example.description: "For logging data"
+   image: logstash:6.7.1
+#   image: logstash:5.4.3
+   volumes:
+     - ./:/logstash_dir
+   command: logstash -f /logstash_dir/logstash.conf
+   depends_on:
+   - elasticsearch
+   ports:
+     - "5959:5959"
+
+volumes:
+ dbdata:
+ esdata:
+ esdata1:
+
+#https://www.elastic.co/guide/en/elasticsearch/reference/6.0/docker.html
+#https://www.codementor.io/samueljames/using-docker-with-elasticsearch-logstash-and-kibana-elk-dzucc3c94
