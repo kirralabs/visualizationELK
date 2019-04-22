@@ -48,8 +48,8 @@ output {
 
 
 ### Instalation 
-1. git clone
-1. cd visualization_elk_twitter
+1. git clone https://github.com/kirralabs/visualizationELK.git
+1. cd visualizationELK
 1. docker-compose up
 
 
@@ -103,6 +103,8 @@ output {
 
 ### Export / Import data elasticsearch
 Ketika kalian sedikit kesulitan atau males untuk membuat akun developer di twitter, teman-teman bisa menggunakan data yang sudah saya kumpulkan beberapa jam menggunakan [elasticsearch-dump](https://github.com/taskrabbit/elasticsearch-dump). Dengan cara ini teman-teman tidak perlu lagi menggunakan logstash, tinggal cukup fokus pada cara memvisualikasikannya di kibana.
+
+Download [DATA](https://drive.google.com/file/d/1B9jdQP_cASvzl1AwNZAp1-qKYQ4gRfda/view?usp=sharing)
 
 ```commandline
 # Import data from file to elasticsearch
