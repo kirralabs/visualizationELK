@@ -121,8 +121,7 @@ atau kita bisa menggunakan docker-image yang sudah dibuat, dengan command dibawa
 ```commandline
 docker run --net=host --rm -ti -v ${PWD}/data:/tmp taskrabbit/elasticsearch-dump --input=/tmp/dump_twitter_data.json --output=http://localhost:9200/twitter --type=data
 
-dumpmapping:
-	docker run --net=host --rm -ti -v ${PWD}/data:/tmp taskrabbit/elasticsearch-dump --input=/tmp/dump_twitter_mapping.json --output=http://localhost:9200/twitter --type=mapping
+docker run --net=host --rm -ti -v ${PWD}/data:/tmp taskrabbit/elasticsearch-dump --input=/tmp/dump_twitter_mapping.json --output=http://localhost:9200/twitter --type=mapping
 ```
 
 
